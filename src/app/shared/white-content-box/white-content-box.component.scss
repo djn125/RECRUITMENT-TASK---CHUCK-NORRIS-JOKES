@@ -1,0 +1,11 @@
+@import "src/assets/styles/variables";
+
+.white-content-box {
+  margin: 0 auto;
+  background: $white;
+  box-shadow: $default-shadow;
+  border-radius: 8px;
+  padding:45px 55px;
+  width:100%;
+  max-width:550px;
+}

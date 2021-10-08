@@ -1,0 +1,54 @@
+@import "src/assets/styles/variables";
+
+ng-select {
+  width: 100%;
+  text-align: left;
+  padding: 14px;
+  margin: 20px auto 0;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all .5s;
+  background-color: $white;
+  border: 2px solid $silver3;
+  color: $darkBlue;
+  min-height:60px;
+  &.active {
+    border-color: $darkBlue;
+    ::ng-deep {
+      ng-dropdown-panel {
+        border-color: $darkBlue;
+      }
+    }
+  }
+  ::ng-deep {
+    ng-dropdown-panel {
+      transition: all .5s;
+      opacity: 1;
+      position: absolute;
+      background: #fff;
+      left: 0;
+      border: 2px solid $silver3;
+      padding: 20px;
+      border-radius: 0 0 6px 6px;
+      border-top: 0;
+      width: calc(100% + 4px);
+      margin: 0 0 0 -2px;
+      .ng-option {
+        padding:10px 0;
+      }
+    }
+    .ng-value {
+      display: flex;
+      flex-direction: row-reverse;
+      padding:3px 13px 3px 20px;
+      border-radius:4px;
+      background: $lightBlue;
+      margin-right: 4px;
+      .ng-value-icon {
+        margin-left:10px;
+      }
+    }
+  }
+}

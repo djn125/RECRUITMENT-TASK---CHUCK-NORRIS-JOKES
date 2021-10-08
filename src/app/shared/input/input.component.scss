@@ -1,0 +1,20 @@
+@import "src/assets/styles/variables";
+
+input[type=text] {
+  width: 100%;
+  text-align: left;
+  padding: 17px;
+  margin: 15px auto 25px;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all .5s;
+  background-color: $white;
+  border: 2px solid $silver3;
+  color: $darkBlue;
+  transition: all .5s;
+  &.active {
+    border-color: $darkBlue;
+  }
+}

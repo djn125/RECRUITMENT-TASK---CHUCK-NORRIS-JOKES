@@ -1,0 +1,32 @@
+@import "src/assets/styles/variables";
+
+button {
+  width:100%;
+  text-align:center;
+  padding:17px;
+  margin: 15px auto;
+  border-radius:6px;
+  border:2px solid;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all .5s;
+  &.dark {
+    background-color: $darkBlue;
+    border-color: $darkBlue;
+    color: $white;
+    &:hover {
+      background-color: $darkBlueHover;
+      border-color: $darkBlueHover;
+    }
+  }
+  &.light {
+    background-color: $silver2;
+    border-color: $silver2;
+    color: $darkBlue;
+    &:hover {
+      background-color: $silver;
+      border-color: $silver;
+    }
+  }
+}
