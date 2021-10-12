@@ -1,0 +1,5 @@
+<div class="counter-wrapper">
+  <div class="minus" (click)="changeQuantity(-1)"></div>
+  <input type="number" [(ngModel)]="counter" (ngModelChange)="validate()" max="100" min="0"/>
+  <div class="plus" (click)="changeQuantity(1)"></div>
+</div>

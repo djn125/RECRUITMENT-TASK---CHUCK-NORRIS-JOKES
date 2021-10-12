@@ -1,0 +1,9 @@
+<ng-select
+  [formControl]="control"
+  [multiple]="true"
+  [items]="options"
+  [clearable]="false"
+  [placeholder]="placeholder"
+  [searchable]="false"
+  [ngClass]="control.value.length ? 'active' : null"
+></ng-select>

@@ -1,0 +1,20 @@
+<div class="main-view-wrapper">
+  <app-white-content-box>
+    <img src="assets/img/cn-pic.png" alt="chuck-norris" />
+    <app-joke-wrapper [joke]="joke$ | async">
+    </app-joke-wrapper>
+    <form [formGroup]="jokesFormControl">
+      <app-select
+        [placeholder]="'Categories'"
+        [options]="(jokesCategories$ | async)?.value"
+        [control]="jokesFormControl.controls.limitTo"
+      ></app-select>
+      <app-input
+        [control]="jokesFormControl.controls.name"
+        [placeholder]="'Impersonate Chuck Norris'"
+      ></app-input>
+      <app-button (click)="getJoke()">Draw random {{ chosenName }} Joke</app-button>
+    </form>
+    <app-save-jokes (getMoreJokes)="getMoreJokes($event)"></app-save-jokes>
+  </app-white-content-box>
+</div>

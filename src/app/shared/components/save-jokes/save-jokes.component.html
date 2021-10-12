@@ -1,0 +1,4 @@
+<div class="save-jokes-wrapper">
+  <app-counter (quantity)="quantity = $event"></app-counter>
+  <app-button [type]="'light'" (click)="getMoreJokes.emit(quantity)">Save jokes!</app-button>
+</div>
