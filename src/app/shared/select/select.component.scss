@@ -3,7 +3,6 @@
 ng-select {
   width: 100%;
   text-align: left;
-  padding: 14px;
   margin: 20px auto 0;
   border-radius: 6px;
   font-weight: 400;
@@ -12,31 +11,73 @@ ng-select {
   transition: all .5s;
   background-color: $white;
   border: 2px solid $silver3;
-  color: $darkBlue;
-  min-height:60px;
+  color: $silver3;
+  max-height: 60px;
+  ::ng-deep {
+    .ng-select-container {
+      height:60px;
+      padding: 15px;
+      cursor:pointer;
+    }
+    .ng-placeholder {
+      padding: 2px;
+    }
+  }
+  &::before, &::after {
+    content: "";
+    transition: all .1s;
+    right:20px;
+    top:26px;
+    width:8px;
+    height:2px;
+    position:absolute;
+    background: $darkBlue;
+    transform: rotate(45deg);
+  }
+  &::after {
+    right:16px;
+    transform: rotate(135deg);
+  }
+  &.ng-select-opened {
+    &::before {
+      transform: rotate(-35deg);
+    }
+    &::after {
+      transform: rotate(45deg);
+    }
+  }
   &.active {
     border-color: $darkBlue;
     ::ng-deep {
       ng-dropdown-panel {
         border-color: $darkBlue;
       }
+      .ng-placeholder {
+        display:none;
+      }
     }
   }
   ::ng-deep {
     ng-dropdown-panel {
       transition: all .5s;
+      padding:15px 4px;
       opacity: 1;
       position: absolute;
       background: #fff;
       left: 0;
       border: 2px solid $silver3;
-      padding: 20px;
       border-radius: 0 0 6px 6px;
       border-top: 0;
       width: calc(100% + 4px);
-      margin: 0 0 0 -2px;
+      margin: -5px 0 0 -2px;
       .ng-option {
-        padding:10px 0;
+        padding:16px;
+        border-radius:6px;
+        transition: all .5s;
+        color:$darkBlue;
+        &:hover {
+          background-color: $silver4;
+        }
       }
     }
     .ng-value {
@@ -45,7 +86,9 @@ ng-select {
       padding:3px 13px 3px 20px;
       border-radius:4px;
       background: $lightBlue;
+      color:$darkBlue;
       margin-right: 4px;
+      cursor:pointer;
       .ng-value-icon {
         margin-left:10px;
       }

@@ -1,5 +1,10 @@
-<input type="text"
-       [placeholder]="placeholder"
-       [formControl]="control"
-       [ngClass]="control.value.length ? 'active' : null"
-/>
+<div class="input-wrapper" appClickOutside (clickOutside)="onInputFocus(false)" #aaa>
+  <input type="text"
+         [formControl]="control"
+         [ngClass]="control.value.length ? 'active' : null"
+         (click)="onInputFocus(true)"
+  />
+  <div class="placeholder" [ngClass]="control.value || inputFocus ? 'active' : null">
+    {{ placeholder }}
+  </div>
+</div>

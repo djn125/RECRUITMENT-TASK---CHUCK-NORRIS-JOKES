@@ -6,8 +6,10 @@ import { ButtonComponent } from './button/button.component';
 import { SelectComponent } from './select/select.component';
 import { CounterComponent } from './counter/counter.component';
 import { InputComponent } from './input/input.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgSelectModule} from "@ng-select/ng-select";
+import { SaveJokesComponent } from './components/save-jokes/save-jokes.component';
+import {ClickOutsideDirective} from "../directives/click-outside.directive";
 
 @NgModule({
   declarations: [
@@ -16,19 +18,24 @@ import {NgSelectModule} from "@ng-select/ng-select";
     ButtonComponent,
     SelectComponent,
     CounterComponent,
-    InputComponent
+    InputComponent,
+    SaveJokesComponent,
+    ClickOutsideDirective
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    NgSelectModule
+    NgSelectModule,
+    FormsModule,
   ],
   exports: [
     JokeWrapperComponent,
     WhiteContentBoxComponent,
     ButtonComponent,
     SelectComponent,
-    InputComponent
+    InputComponent,
+    SaveJokesComponent,
+    ClickOutsideDirective
   ]
 })
 export class SharedModule { }

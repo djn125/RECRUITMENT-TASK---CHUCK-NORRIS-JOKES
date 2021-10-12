@@ -1,0 +1,60 @@
+@import "src/assets/styles/variables";
+
+:host {
+  width:100%;
+  margin-right:20px;
+}
+.counter-wrapper {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+  margin: 15px auto;
+  border-radius:6px;
+  cursor: pointer;
+  transition: all .5s;
+  background-color: $silver2;
+  border-color: $silver2;
+  color: $darkBlue;
+  width:100%;
+  padding:17px;
+  input[type='number'] {
+    background:transparent;
+    border:0;
+    outline:0;
+    text-align:center;
+    font-weight: 500;
+    font-size: 17px;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  .minus, .plus {
+    width:25px;
+    height:25px;
+    border:2px solid $darkBlue;
+    border-radius: 13px;
+    position:relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin:0 10px;
+    &::before, &::after {
+      content: "";
+      width:12px;
+      height:2px;
+      position:absolute;
+      background: $darkBlue;
+    }
+  }
+
+  .plus {
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+}

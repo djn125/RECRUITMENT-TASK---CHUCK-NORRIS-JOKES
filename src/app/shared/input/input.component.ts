@@ -9,10 +9,14 @@ import {AbstractControl, FormControl} from "@angular/forms";
 export class InputComponent implements OnInit {
   @Input() placeholder: string  = '';
   @Input() control: AbstractControl;
+  inputFocus = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onInputFocus(isFocused: boolean) {
+    this.inputFocus = isFocused;
+  }
 }

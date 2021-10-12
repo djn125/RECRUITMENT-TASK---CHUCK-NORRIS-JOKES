@@ -6,6 +6,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {JokesTypesEnum} from "./enum/jokes-types.enum";
 import {HttpParams} from "@angular/common/http";
 import {JokesCategoriesModel} from "./model/jokes-categories.model";
+import {DomSanitizer} from "@angular/platform-browser";
+import {JokeParamsModel} from "./model/joke-params.model";
 
 @Component({
   selector: 'app-root',
@@ -17,8 +19,9 @@ export class AppComponent implements OnInit {
   jokesCategories$: Observable<JokesCategoriesModel>;
   jokesFormControl: FormGroup;
   jokesTypes: typeof JokesTypesEnum = JokesTypesEnum;
+  value: string = '';
 
-  constructor(private jokesService: JokesService, private formBuilder: FormBuilder) {}
+  constructor(private jokesService: JokesService, private formBuilder: FormBuilder, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.jokesService.getAvailableJokesCategories();
@@ -29,25 +32,30 @@ export class AppComponent implements OnInit {
   }
 
   get chosenName() {
-    return this.jokesFormControl.get('firstName').value
+    return this.jokesFormControl.get('name').value
   }
 
   buildJokesForm() {
     this.jokesFormControl = this.formBuilder.group(
       {
         limitTo: [[]],
-        firstName: [''],
-        lastName: ['']
+        name: ['', Validators.maxLength(50)]
       }
     )
   }
 
-  getJoke() {
-    const params = this.jokesFormControl.getRawValue();
-    const paramsObject = {
-      limitTo: JSON.stringify(params.limitTo),
-      firstName: params.firstName
-    }
-    this.jokesService.getRandomJoke(paramsObject);
+  getJoke(): void {
+    const params = this.prepareParams(this.jokesFormControl.getRawValue());
+    this.jokesService.getRandomJoke(params);
+  }
+
+  prepareParams(data): JokeParamsModel {
+    return new JokeParamsModel(data.limitTo, data.name ? data.name.split(' ')[0] : '', data.name.split(' ')[1] ? data.name.split(' ')[1] : '')
+  }
+
+  getMoreJokes(quantity: number): void {
+    this.jokesService.getMoreJokes(quantity);
+    let jokesArray: JokeModel[];
+    this.jokesService.jokesArray$.subscribe(res => jokesArray = res);
   }
 }
