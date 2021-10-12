@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
   constructor(private jokesService: JokesService, private formBuilder: FormBuilder, private sanitizer: DomSanitizer) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.jokesService.getAvailableJokesCategories();
     this.jokesCategories$ = this.jokesService.jokesCategories$;
     this.buildJokesForm()
@@ -31,11 +31,11 @@ export class AppComponent implements OnInit {
     this.joke$ = this.jokesService.joke$;
   }
 
-  get chosenName() {
+  get chosenName(): string {
     return this.jokesFormControl.get('name').value
   }
 
-  buildJokesForm() {
+  buildJokesForm(): void {
     this.jokesFormControl = this.formBuilder.group(
       {
         limitTo: [[]],
